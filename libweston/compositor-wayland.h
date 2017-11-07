@@ -44,6 +44,7 @@ struct weston_wayland_backend_config {
 	bool fullscreen;
 	char *cursor_theme;
 	int cursor_size;
+	int num_devices;
 };
 
 #ifdef  __cplusplus

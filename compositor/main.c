@@ -1225,6 +1225,7 @@ load_drm_backend(struct weston_compositor *c,
 		{ WESTON_OPTION_INTEGER, "tty", 0, &config.tty },
 		{ WESTON_OPTION_BOOLEAN, "current-mode", 0, &wet->drm_use_current_mode },
 		{ WESTON_OPTION_BOOLEAN, "use-pixman", 0, &config.use_pixman },
+		{ WESTON_OPTION_INTEGER, "num-devices", 1, &config.num_devices },
 	};
 
 	parse_options(options, ARRAY_LENGTH(options), argc, argv);
@@ -1623,6 +1624,7 @@ load_wayland_backend(struct weston_compositor *c,
 	config.fullscreen = false;
 	config.sprawl = false;
 	config.use_pixman = false;
+	config.num_devices = 1;
 
 	const struct weston_option wayland_options[] = {
 		{ WESTON_OPTION_INTEGER, "width", 0, &parsed_options->width },
