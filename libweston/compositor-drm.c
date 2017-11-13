@@ -3520,7 +3520,7 @@ update_outputs(struct drm_backend *b, struct udev_device *drm_device)
 	uint32_t *connected, dev_id;
 	int i;
 
-	for (dev_id = 0; dev_id < b->num_devices; dev_id++) {
+	dev_id = get_kms_device_id_from_udev (b, drm_device);
 	resources = drmModeGetResources(b->drm[dev_id].fd);
 	if (!resources) {
 		weston_log("drmModeGetResources failed\n");
@@ -3596,7 +3596,6 @@ update_outputs(struct drm_backend *b, struct udev_device *drm_device)
 
 	free(connected);
 	drmModeFreeResources(resources);
-	}
 }
 
 static int
