@@ -2744,6 +2744,7 @@ drm_output_init_pixman(struct drm_output *output, struct drm_backend *b)
 
 	pixman_region32_init_rect(&output->previous_damage,
 				  output->base.x, output->base.y, output->base.width, output->base.height);
+	b->cursors_are_broken = 1;
 
 	return 0;
 
