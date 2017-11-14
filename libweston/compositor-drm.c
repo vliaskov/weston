@@ -3655,9 +3655,9 @@ drm_destroy(struct weston_compositor *ec)
 	weston_compositor_shutdown(ec);
 
 	for (i = 0; i < b->num_devices; i++)
-		if (b->gbm)
+		if (b->gbm[i])
 			gbm_device_destroy(b->gbm[i]);
-
+	free(b->gbm);
 	udev_unref(b->udev);
 
 	weston_launcher_destroy(ec->launcher);
