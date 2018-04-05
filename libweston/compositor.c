@@ -5595,12 +5595,12 @@ weston_load_module(const char *name, const char *entrypoint)
 	if (len >= sizeof path)
 		return NULL;
 
-	module = dlopen(path, RTLD_NOW | RTLD_NOLOAD);
+	/* Skip RTLD_NOLOAD option due to multiple kms devices */
+	/*module = dlopen(path, RTLD_NOW | RTLD_NOLOAD);
 	if (module) {
-		weston_log("Module '%s' already loaded\n", path);
 		dlclose(module);
 		return NULL;
-	}
+	}*/
 
 	weston_log("Loading module '%s'\n", path);
 	module = dlopen(path, RTLD_NOW);
@@ -5608,7 +5608,6 @@ weston_load_module(const char *name, const char *entrypoint)
 		weston_log("Failed to load module: %s\n", dlerror());
 		return NULL;
 	}
-
 	init = dlsym(module, entrypoint);
 	if (!init) {
 		weston_log("Failed to lookup init function: %s\n", dlerror());

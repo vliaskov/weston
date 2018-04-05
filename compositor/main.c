@@ -1113,6 +1113,7 @@ load_drm_backend(struct weston_compositor *c,
 		{ WESTON_OPTION_STRING, "drm-device", 0, &config.specific_device },
 		{ WESTON_OPTION_BOOLEAN, "current-mode", 0, &wet->drm_use_current_mode },
 		{ WESTON_OPTION_BOOLEAN, "use-pixman", 0, &config.use_pixman },
+		{ WESTON_OPTION_INTEGER, "num-devices", 1, &config.num_devices },
 	};
 
 	parse_options(options, ARRAY_LENGTH(options), argc, argv);
@@ -1527,6 +1528,7 @@ load_wayland_backend(struct weston_compositor *c,
 	config.sprawl = sprawl_;
 	config.use_pixman = use_pixman_;
 	config.fullscreen = fullscreen_;
+	config.num_devices = 1;
 
 	section = weston_config_get_section(wc, "shell", NULL, NULL);
 	weston_config_section_get_string(section, "cursor-theme",

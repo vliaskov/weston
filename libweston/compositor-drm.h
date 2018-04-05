@@ -140,6 +140,7 @@ struct weston_drm_backend_config {
 	 * It is exprimed in milliseconds, 0 means disabled. */
 	uint32_t pageflip_timeout;
 
+	uint32_t num_devices;
 	/** Specific DRM device to open
 	 *
 	 * A DRM device name, like "card0", to open. If NULL, use heuristics
